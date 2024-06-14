@@ -15,12 +15,7 @@ export async function GET(request: NextRequest) {
     }
     //get the path or home page, then revalidate the path
     const path = request.nextUrl.searchParams.get('path') || '/'
-
-    if(path){
-        console.log(path);
-        revalidatePath(path);
-        return NextResponse.json({ revalidated: true, now: Date.now() })
-    }
-    //revalidatePath(path, 'page');
-    //return NextResponse.json({ revalidated: true })
+    revalidatePath(path);
+    return NextResponse.json({ revalidated: true, now: Date.now() })
+ 
 }
